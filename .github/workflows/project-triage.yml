@@ -26,8 +26,7 @@ jobs:
           repo-token: ${{ secrets.GITHUBTEACHER_TOKEN }}
 
   add-issue-to-triage:
-    needs: add-issue-to-column
-    if: ${{ failure() && github.event.action == 'opened' }}
+    if: ${{ github.event.action == 'opened' && !github.event.issue.labels}}
     runs-on: ubuntu-latest
     steps:
       - name: "Add issue to project triage column"
