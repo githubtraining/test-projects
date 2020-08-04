@@ -2,7 +2,7 @@ name: Move new issues into Triage
 
 on:
   issues: 
-    types: [opened, labeled]
+    types: [opened]
 
 jobs:
   add-issue-to-triage:
@@ -14,24 +14,4 @@ jobs:
         with:
           project: Test project
           column: "Triage"
-          repo-token: ${{ secrets.GITHUBTEACHER_TOKEN }}
-
-  add-issue-to-column:
-    needs: add-issue-to-triage
-    runs-on: ubuntu-latest
-    steps:
-      - name: "Add issue to project bug column"
-        if: github.event.label.name == 'bug'
-        uses: alex-page/github-project-automation-plus@v0.2.4
-        with:
-          project: Test project
-          column: "Needs to be replicated / tested"
-          repo-token: ${{ secrets.GITHUBTEACHER_TOKEN }}
-
-      - name: "Add issue to project enhancement column"
-        if: github.event.label.name == 'enhancement'
-        uses: alex-page/github-project-automation-plus@v0.2.4
-        with:
-          project: Test project
-          column: "To do: suggestion or enhancement"
           repo-token: ${{ secrets.GITHUBTEACHER_TOKEN }}
