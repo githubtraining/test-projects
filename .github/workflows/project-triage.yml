@@ -2,7 +2,6 @@ name: Move new issues into Triage
 
 on: 
   issues:
-  push:
     types: [opened, labeled]
 
 jobs:
