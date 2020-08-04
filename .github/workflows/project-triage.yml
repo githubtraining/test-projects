@@ -12,4 +12,4 @@ jobs:
         with:
           project: Test project
           column: In Progress
-          repo-token: ${{ secrets.GITHUB_TOKEN }}
+          repo-token: ${{ secrets.GITHUBTEACHER_TOKEN }}
