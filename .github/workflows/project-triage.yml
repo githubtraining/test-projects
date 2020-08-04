@@ -16,7 +16,7 @@ jobs:
           repo-token: ${{ secrets.GITHUBTEACHER_TOKEN }}
 
   add-issue-to-column:
-    if: github.event.action == 'labeled'
+    if: failure() && github.event.action == 'labeled'
     runs-on: ubuntu-latest
     steps:
       - name: "Add issue to project bug column"
