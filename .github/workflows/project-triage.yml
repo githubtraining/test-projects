@@ -6,9 +6,11 @@ on:
 
 jobs:
   add-issue-to-triage:
-    if: github.event.action == 'opened' && github.event.issue.labels == 0
+    if: github.event.action == 'opened
     runs-on: ubuntu-latest
     steps:
+      - run: |
+          echo {{ github.event.issue.labels }}
       - name: "Add issue to project triage column"
         uses: alex-page/github-project-automation-plus@v0.2.4
         with:
