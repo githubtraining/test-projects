@@ -2,7 +2,8 @@ name: Move new issues into Triage
 
 on:
   issues:
-    types: [opened, labeled]
+    - opened
+    - labeled
 
 jobs:
   add-issue-to-project:
