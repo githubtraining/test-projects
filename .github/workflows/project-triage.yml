@@ -10,7 +10,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - run: |
-          echo ${{ github.event.issue.labels.count }}
+          echo "Trying a contains"
+          echo ${{ contains(github.event.issue.labels.*.name, '*') }}
       - name: "Add issue to project triage column"
         uses: alex-page/github-project-automation-plus@v0.2.4
         with:
