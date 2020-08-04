@@ -5,22 +5,8 @@ on:
     types: [opened, labeled]
 
 jobs:
-  add-issue-to-triage:
-    if: github.event.action == 'opened'
-    runs-on: ubuntu-latest
-    steps:
-      - run: |
-          echo "Trying a contains ${{ toJson( github.event ) }}"
-          echo ${{ contains(github.event.issue.labels, 'name') }}
-      - name: "Add issue to project triage column"
-        uses: alex-page/github-project-automation-plus@v0.2.4
-        with:
-          project: Test project
-          column: "Triage"
-          repo-token: ${{ secrets.GITHUBTEACHER_TOKEN }}
-
   add-issue-to-column:
-    if: github.event.action == 'labeled'
+    if: ${{ (github.event.action == 'opened' && github.event.issue.labels) || github.event.action == 'labeled' }}
     runs-on: ubuntu-latest
     steps:
       - name: "Add issue to project bug column"
@@ -37,4 +23,15 @@ jobs:
         with:
           project: Test project
           column: "To do: suggestion or enhancement"
+          repo-token: ${{ secrets.GITHUBTEACHER_TOKEN }}
+
+  add-issue-to-triage:
+    if: ${{ failure() && github.event.action == 'opened' }}
+    runs-on: ubuntu-latest
+    steps:
+      - name: "Add issue to project triage column"
+        uses: alex-page/github-project-automation-plus@v0.2.4
+        with:
+          project: Test project
+          column: "Triage"
           repo-token: ${{ secrets.GITHUBTEACHER_TOKEN }}
