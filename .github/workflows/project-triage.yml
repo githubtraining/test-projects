@@ -1,10 +1,13 @@
 name: Move new issues into Triage
 
-on: issues
+on: 
+  issues:
+  push:
+    types: [opened, labeled]
 
 jobs:
   add-issue-to-triage:
-    if: github.event.action == 'opened'
+    if: github.event.action == 'opened' && issues.event.label == null
     runs-on: ubuntu-latest
     steps:
       - name: "Add issue to project triage column"
@@ -16,7 +19,7 @@ jobs:
           repo-token: ${{ secrets.GITHUBTEACHER_TOKEN }}
 
   add-issue-to-column:
-    if: failure() && github.event.action == 'labeled'
+    if: github.event.action == 'labeled'
     runs-on: ubuntu-latest
     steps:
       - name: "Add issue to project bug column"
