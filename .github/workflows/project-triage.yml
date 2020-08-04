@@ -8,21 +8,24 @@ jobs:
   add-issue-to-project:
     runs-on: ubuntu-latest
     steps:
-      - if: github.event.label.name == 'bug'
+      - name: "Add issue to project bug column"
+        if: github.event.label.name == 'bug'
         uses: alex-page/github-project-automation-plus@v0.2.4
         with:
           project: Test project
           column: "Needs to be replicated / tested"
           repo-token: ${{ secrets.GITHUBTEACHER_TOKEN }}
 
-      - if: github.event.label.name == 'enhancement'
+      - name: "Add issue to project enhancement column"
+        if: github.event.label.name == 'enhancement'
         uses: alex-page/github-project-automation-plus@v0.2.4
         with:
           project: Test project
           column: "To do: suggestion or enhancement"
           repo-token: ${{ secrets.GITHUBTEACHER_TOKEN }}
           
-      - if: github.event.label.name == null
+      - name: "Add issue to project triage column"
+        if: github.event.label.name == null
         uses: alex-page/github-project-automation-plus@v0.2.4
         with:
           project: Test project
