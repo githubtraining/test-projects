@@ -6,7 +6,7 @@ on:
 
 jobs:
   add-issue-to-triage:
-    if: github.event.action == 'opened
+    if: github.event.action == 'opened'
     runs-on: ubuntu-latest
     steps:
       - run: |
