@@ -5,15 +5,6 @@ on:
     types: [opened, labeled]
 
 jobs:
-  add-to-triage:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: alex-page/github-project-automation-plus@v0.2.4
-        with:
-          project: Test project
-          column: "To do: suggestion or enhancement"
-          repo-token: ${{ secrets.GITHUBTEACHER_TOKEN }}
-  
   add-issue-to-project:
     runs-on: ubuntu-latest
     steps:
