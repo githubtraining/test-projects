@@ -31,7 +31,7 @@ jobs:
           column: "To do: suggestion or enhancement"
           repo-token: ${{ secrets.GITHUBTEACHER_TOKEN }}
           
-      - if: not(github.event.label.name)
+      - if: github.event.label.name == null
         uses: alex-page/github-project-automation-plus@v0.2.4
         with:
           project: Test project
