@@ -16,7 +16,6 @@ jobs:
           repo-token: ${{ secrets.GITHUBTEACHER_TOKEN }}
 
   add-issue-to-column:
-    needs: add-issue-to-triage
     if: github.event.action == 'labeled'
     runs-on: ubuntu-latest
     steps:
