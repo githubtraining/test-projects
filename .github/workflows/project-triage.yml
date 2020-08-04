@@ -4,7 +4,7 @@ on: issues
 
 jobs:
   add-issue-to-triage:
-    if: github.event.action == opened
+    if: github.event.action == 'opened'
     runs-on: ubuntu-latest
     steps:
       - name: "Add issue to project triage column"
@@ -17,7 +17,7 @@ jobs:
 
   add-issue-to-column:
     needs: add-issue-to-triage
-    if: github.event.action == labeled
+    if: github.event.action == 'labeled'
     runs-on: ubuntu-latest
     steps:
       - name: "Add issue to project bug column"
