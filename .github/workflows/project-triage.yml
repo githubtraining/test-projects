@@ -26,6 +26,7 @@ jobs:
           repo-token: ${{ secrets.GITHUBTEACHER_TOKEN }}
 
   add-issue-to-triage:
+    needs: add-issue-to-column
     if: ${{ failure() && github.event.action == 'opened' }}
     runs-on: ubuntu-latest
     steps:
