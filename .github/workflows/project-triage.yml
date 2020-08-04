@@ -1,35 +1,14 @@
-name: Move new issues into Triage
+name: Move new issues into maintenance project
 
 on: 
   issues:
-    types: [opened, labeled]
+    types: [opened]
 
 jobs:
-  add-issue-to-column:
-    if: ${{ (github.event.action == 'opened' && github.event.issue.labels) || github.event.action == 'labeled' }}
-    runs-on: ubuntu-latest
-    steps:
-      - name: "Add issue to project bug column"
-        if: github.event.label.name == 'bug'
-        uses: alex-page/github-project-automation-plus@v0.2.4
-        with:
-          project: Test project
-          column: "Needs to be replicated / tested"
-          repo-token: ${{ secrets.GITHUBTEACHER_TOKEN }}
-
-      - name: "Add issue to project enhancement column"
-        if: github.event.label.name == 'enhancement'
-        uses: alex-page/github-project-automation-plus@v0.2.4
-        with:
-          project: Test project
-          column: "To do: suggestion or enhancement"
-          repo-token: ${{ secrets.GITHUBTEACHER_TOKEN }}
-
   add-issue-to-triage:
-    if: ${{ github.event.action == 'opened' && !github.event.issue.labels}}
     runs-on: ubuntu-latest
     steps:
-      - name: "Add issue to project triage column"
+      - name: "Add issue to project"
         uses: alex-page/github-project-automation-plus@v0.2.4
         with:
           project: Test project
