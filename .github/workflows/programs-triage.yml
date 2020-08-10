@@ -1,17 +1,16 @@
 name: Triage issues
 
 on: 
-  issues:
-    types: [closed, reopened, labeled]
+  issues
 
 jobs:
   add-issue-to-triage:
     name: "Add new issue to Programs triage board"
     runs-on: ubuntu-latest
     steps:
-      - if: "( contains(github.event.issue.labels.*.name, 'pg: request') ) || ( contains(github.event.issue.labels.*.name, 'G: Programs') )"
-        uses: alex-page/github-project-automation-plus@v0.2.4
+      - uses: mattdavis0351/github-project-aggregator@master
         with:
-          project: "Programs Triage (test only)"
-          column: "📥 Triage"
-          repo-token: ${{ secrets.HECTORSECTOR_PROJECT_TOKEN }}
+          projectName: ""
+          labels: "bug, enhancement"
+          repos: ""
+          token: ${{ secrets.HECTORSECTOR_PROJECT_TOKEN }}
