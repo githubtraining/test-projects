@@ -13,5 +13,5 @@ jobs:
           projectName: ""
           labels: "bug, enhancement"
           repos: ""
-          token: ${{secrets.GITHUB_TOKEN}}
-#           token: ${{ secrets.HECTORSECTOR_PROJECT_TOKEN }}
+#           token: ${{secrets.GITHUB_TOKEN}}
+          token: ${{ secrets.HECTORSECTOR_PROJECT_TOKEN }}
