@@ -1,4 +1,4 @@
-name: Greet new contributors and move new issues into maintenance project
+name: Triage issues
 
 on: 
   issues:
@@ -12,6 +12,6 @@ jobs:
       - if: "( contains(github.event.issue.labels.*.name, 'pg: request') ) || ( contains(github.event.issue.labels.*.name, 'G: Programs') )"
         uses: alex-page/github-project-automation-plus@v0.2.4
         with:
-          project: "Program Triage (test only)"
+          project: "Programs Triage (test only)"
           column: "📥 Triage"
           repo-token: ${{ secrets.HECTORSECTOR_PROJECT_TOKEN }}
