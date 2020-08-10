@@ -11,6 +11,6 @@ jobs:
       - uses: mattdavis0351/github-project-aggregator@master
         with:
           projectName: ""
-          labels: "bug, enhancement"
+          labels: "bug,enhancement"
           repos: ""
           token: ${{ secrets.HECTORSECTOR_PROJECT_TOKEN }}
